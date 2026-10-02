@@ -13,6 +13,7 @@ let ws = null;
 let myRole = null;
 let lastX = -1;
 let lastY = -1;
+let intermissionTimer = null;
 
 function hexToRgb(hex) {
   const num = parseInt(hex.slice(1), 16);
@@ -79,10 +80,18 @@ function connect() {
       if (timerBadge) timerBadge.textContent = `${msg.timeLeft}s`;
     } else if (msg.type === "ROUND_TIMEOUT") {
       appendMessage(msg.message, "msg-system");
-      statusBar.textContent = msg.message;
+      if (myRole === "DRAWER") {
+        statusBar.textContent = `Vicory bring valour home "${msg.word}" NEXT IN 10S`;
+      } else {
+        statusBar.textContent = `you aree soo bad this "${msg.word}" NEXT IN 10S`;
+      }
     } else if (msg.type === "CORRECT_GUESS") {
       appendMessage(msg.message, "msg-system");
-      statusBar.textContent = msg.message;
+      if (myRole === "GUESSER") {
+        statusBar.textContent = `goood jobbb  "${msg.word}"! NEXT IN 10S`;
+      } else {
+        statusBar.textContent = `YOOOOO broooo "${msg.word}"!NEXT IN 10S`;
+      }
     } else if (msg.type === "CHAT_MESSAGE") {
       appendMessage(`${msg.sender}: ${msg.text}`);
     }

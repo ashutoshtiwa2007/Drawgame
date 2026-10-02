@@ -83,15 +83,18 @@ function startNewRound() {
 
     if (timeLeft <= 0) {
       clearInterval(roundTimer);
+      
       for (const client of players) {
         client.send(
           JSON.stringify({
             type: "ROUND_TIMEOUT",
-            message: `the word was "${currentWord}"`,
+            message: `TIMES UP the word was "${currentWord}" NEXT GAME IN 10S`,
+            winner: "DRAWER",
+            word: currentWord
           }),
         );
       }
-      setTimeout(startNewRound, 4000);
+      setTimeout(startNewRound, 10000);
     }
   }, 1000);
 }
@@ -152,7 +155,9 @@ wss.on("connection", (socket) => {
             client.send(
               JSON.stringify({
                 type: "CORRECT_GUESS",
-                message: `CONGOOOOOO the word "${currentWord}"`,
+                message: `CONGOOOOOO the word "${currentWord} next round in 10s"`,
+                winner: "GUESSER",
+                word: currentWord
               }),
             );
           }
