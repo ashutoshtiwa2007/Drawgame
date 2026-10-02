@@ -48,7 +48,8 @@
 
 # 6TH 
 - stuck with tunneling local and cloudflare but could not make it instead uploaded it to render
-- best as it is fast 
+- best as it is fast
+- - ![Project Logo](./img/Screenshot 2026-10-03 033016.png)
 
 ## Tech Stack
 - Client: HTML5 Canvas, Vanilla JavaScript, CSS
