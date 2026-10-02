@@ -58,7 +58,7 @@
 
 ## How to run it
 - Clone the repo:
-- ![Project Logo](./img/Screenshot%2026-10-03%033016.png)
+- ![Project Logo](./img/Screenshot%202026-10-03%20033016.png)
 Bash
 ``` git clone https://github.com/ashutoshtiwa2007/Drawgame.git
 cd Drawgame
