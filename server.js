@@ -152,11 +152,11 @@ wss.on("connection", (socket) => {
             client.send(
               JSON.stringify({
                 type: "CORRECT_GUESS",
-                message: `the word "${currentWord}"`,
+                message: `CONGOOOOOO the word "${currentWord}"`,
               }),
             );
           }
-          setTimeout(startNewRound, 5000);
+          setTimeout(startNewRound, 10000);
         } else {
           for (const client of players) {
             client.send(
