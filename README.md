@@ -59,8 +59,8 @@
 - Clone the repo:
 
 Bash
-``` git clone https://github.com/<your-username>/pixel-canvas-duel.git
-cd pixel-canvas-duel
+``` git clone https://github.com/ashutoshtiwa2007/Drawgame.git
+cd Drawgame
 - Install dependencies:
 
 Bash
