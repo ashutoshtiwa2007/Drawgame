@@ -176,7 +176,7 @@ wss.on("connection", (socket) => {
             socket.send(
               JSON.stringify({
                 type: "WRONG_GUESS",
-                message: `that wass big buhhh"${msg.text}" is incorrect! Try again.`
+                message: `that wass big buhhh"${msg.text}" is incorrect! Try again. you have time`
               })
             );
           }
@@ -209,3 +209,4 @@ const PORT = process.env.PORT || 8000;
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`Game server running on port ${PORT}`);
 });
+}
