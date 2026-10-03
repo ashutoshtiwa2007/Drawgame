@@ -73,7 +73,7 @@ function startNewRound() {
       );
     }
   });
-  roundTimer = setInterval(() => {
+roundTimer = setInterval(() => {
     timeLeft--;
     for (const client of players) {
       if (client.readyState === 1) {
@@ -83,12 +83,11 @@ function startNewRound() {
 
     if (timeLeft <= 0) {
       clearInterval(roundTimer);
-      
       for (const client of players) {
         client.send(
           JSON.stringify({
             type: "ROUND_TIMEOUT",
-            message: `TIMES UP the word was "${currentWord}" NEXT GAME IN 10S`,
+            message: `TIMES UP thing was "${currentWord}" NEXT GAME IN 10S`,
             winner: "DRAWER",
             word: currentWord
           }),
@@ -97,7 +96,6 @@ function startNewRound() {
       setTimeout(startNewRound, 10000);
     }
   }, 1000);
-}
 
 wss.on("connection", (socket) => {
   if (players.length >= 2) {
@@ -155,7 +153,7 @@ wss.on("connection", (socket) => {
             client.send(
               JSON.stringify({
                 type: "CORRECT_GUESS",
-                message: `CONGOOOOOO the word "${currentWord} next round in 10s"`,
+                message: `CONGOOOOOO the word was "${currentWord}"! Next round in 10s...`,
                 winner: "GUESSER",
                 word: currentWord
               }),
@@ -163,6 +161,7 @@ wss.on("connection", (socket) => {
           }
           setTimeout(startNewRound, 10000);
         } else {
+  
           for (const client of players) {
             client.send(
               JSON.stringify({
@@ -172,9 +171,18 @@ wss.on("connection", (socket) => {
               }),
             );
           }
+         
+          if (socket !== currentDrawer && currentWord) {
+            socket.send(
+              JSON.stringify({
+                type: "WRONG_GUESS",
+                message: `that wass big buhhh"${msg.text}" is incorrect! Try again.`
+              })
+            );
+          }
         }
       }
-    } catch (err) {
+    }catch (err) {
       console.error("Malformed JSON received:", err);
     }
   });

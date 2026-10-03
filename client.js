@@ -92,10 +92,15 @@ function connect() {
       } else {
         statusBar.textContent = `YOOOOO broooo "${msg.word}"!NEXT IN 10S`;
       }
+    } else if (msg.type === "WRONG_GUESS") {
+      appendMessage(msg.message, "msg-wrong");
+      guessInput.style.borderColor = "red";
+      setTimeout(() => {
+        guessInput.style.borderColor = "rgb(134, 126, 126)";
+      }, 500);
     } else if (msg.type === "CHAT_MESSAGE") {
       appendMessage(`${msg.sender}: ${msg.text}`);
     }
-  };
 
   ws.onclose = () => {
     statusBar.textContent = "Disconnected! Retrying in 2 sec";
