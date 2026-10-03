@@ -178,7 +178,7 @@ wss.on("connection", (socket) => {
                 client.send(
                   JSON.stringify({
                     type: "WRONG_GUESS",
-                    message: `❌ "${msg.text}" is incorrect!`,
+                    message: `bruhh that was wron "${msg.text}" is incorrect! try again you have time`,
                   }),
                 );
               }
