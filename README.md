@@ -71,3 +71,10 @@ Start the server:
 Bash
 node server.js
 Open http://localhost:8000 in two separate browser windows to test the game loop.
+````
+*** to play with friends ***
+- Upload the clones repo to the render 
+- make a accound on render using your github
+- then using webservices open deploy it
+- now share the link with your friend to play
+- *** or simply two player open the link given by me to play ***
