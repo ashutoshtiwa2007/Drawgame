@@ -161,7 +161,7 @@ wss.on("connection", (socket) => {
           }
           setTimeout(startNewRound, 10000);
         }else {
-  
+          
           for (const client of players) {
             client.send(
               JSON.stringify({
@@ -173,16 +173,20 @@ wss.on("connection", (socket) => {
           }
          
           if (socket !== currentDrawer && currentWord) {
-            socket.send(
-              JSON.stringify({
-                type: "WRONG_GUESS",
-                message: `that wass big buhhh"${msg.text}" is incorrect! Try again. you have time`
-              })
-            );
+            for (const client of players) {
+              if (client.readyState === 1) {
+                client.send(
+                  JSON.stringify({
+                    type: "WRONG_GUESS",
+                    message: `❌ "${msg.text}" is incorrect!`,
+                  }),
+                );
+              }
+            }
           }
         }
       }
-    }catch (err) {
+        }catch (err) {
       console.error("Malformed JSON received:", err);
     }
   });

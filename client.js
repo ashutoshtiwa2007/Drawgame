@@ -94,10 +94,12 @@ function connect() {
       }
     } else if (msg.type === "WRONG_GUESS") {
       appendMessage(msg.message, "msg-wrong");
-      guessInput.style.borderColor = "red";
-      setTimeout(() => {
-        guessInput.style.borderColor = "rgb(134, 126, 126)";
-      }, 500);
+      if (!guessInput.disabled) {
+        guessInput.style.borderColor = "red";
+        setTimeout(() => {
+          guessInput.style.borderColor = "rgb(134, 126, 126)";
+        }, 500);
+      }
     } else if (msg.type === "CHAT_MESSAGE") {
       appendMessage(`${msg.sender}: ${msg.text}`);
     }
