@@ -51,6 +51,9 @@
 - best as it is fast
 - ![Project Logo](./img/Screenshot%202026-10-03%20033016.png)
 
+# minor changes
+- msg broadcasting to all the players intead of only to guesser
+
 ## Tech Stack
 - Client: HTML5 Canvas, Vanilla JavaScript, CSS
 - Server: Node.js, http, ws
