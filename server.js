@@ -96,7 +96,7 @@ roundTimer = setInterval(() => {
       setTimeout(startNewRound, 10000);
     }
   }, 1000);
-
+}
 wss.on("connection", (socket) => {
   if (players.length >= 2) {
     socket.send(JSON.stringify({ type: "ERROR", message: "Game is full" }));
@@ -160,7 +160,7 @@ wss.on("connection", (socket) => {
             );
           }
           setTimeout(startNewRound, 10000);
-        } else {
+        }else {
   
           for (const client of players) {
             client.send(
@@ -209,4 +209,3 @@ const PORT = process.env.PORT || 8000;
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`Game server running on port ${PORT}`);
 });
-}

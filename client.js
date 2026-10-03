@@ -101,6 +101,7 @@ function connect() {
     } else if (msg.type === "CHAT_MESSAGE") {
       appendMessage(`${msg.sender}: ${msg.text}`);
     }
+  };
 
   ws.onclose = () => {
     statusBar.textContent = "Disconnected! Retrying in 2 sec";
